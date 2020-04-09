@@ -20,16 +20,22 @@ exit.addEventListener('click', () => {
 });
 
 function handlerImage(event) {
-    const image = event.target.files[0];
-
-    if (image.size > 32000000) return;
-
-    if (image) {
-        const reader = new FileReader();
-        reader.readAsDataURL(image);
-
-        reader.onload = (e) => {
-            createImages(e.target.result);
+    const images = event.target.files;
+    let progress = 0;
+    
+    for (let image of images) {
+        if (image.size > 32000000) return;
+        
+        if (image) {
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            
+            reader.onload = (e) => {
+                createImages(e.target.result);
+                if (progress === 100) {
+                    progressElement.style.display = 'none';
+                }
+            }
         }
     }
 }
