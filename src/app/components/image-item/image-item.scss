@@ -1,0 +1,10 @@
+.image-item {
+    height: 150px;
+    width: 150px;
+    box-shadow: 0 0 10px #a5a5a5 inset;
+    margin: 10px;
+    .image-item__image {
+        height: 150px;
+        width: 150px;
+    }
+}

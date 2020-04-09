@@ -15,6 +15,10 @@
         padding: 10px;
         border: 2px dashed #777777;
         .add-files__button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 5px;
             background: #fff;
             outline: none;
             height: 50px;
