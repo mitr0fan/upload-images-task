@@ -6,6 +6,7 @@ export class ImageItemComponent {
         const imageItemComponent = document.createElement('div');
         imageItemComponent.className = 'image-item';
         imageItemComponent.innerHTML = imageItemHtml;
+        imageItemComponent.draggable = true;
         return imageItemComponent;
     }
 }
