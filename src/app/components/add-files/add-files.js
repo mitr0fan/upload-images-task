@@ -19,9 +19,6 @@ exit.addEventListener('click', () => {
     }
 });
 
-// AddFilesComponent.addEventListener('dragenter', () => {console.log('dragenter')}, false);
-// AddFilesComponent.addEventListener('dragleave', () => {console.log('dragleave')}, false);
-// AddFilesComponent.addEventListener('dragover', () => {console.log('dragover')}, false);
 AddFilesComponent.addEventListener('drop', (event) => {
     event.preventDefault();
     let files = event.dataTransfer.files;
