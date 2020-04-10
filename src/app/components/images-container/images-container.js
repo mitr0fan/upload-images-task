@@ -26,6 +26,7 @@ function dragAndDrop() {
     }, false);
 
     document.addEventListener('drop', (event) => {
+        if (!draggedElem) return;
         if (!draggedElem.firstElementChild) return;
         if (event.target === draggedElem || event.target.parentNode === draggedElem) return;
         if (event.target.className === 'image-item' && event.target.firstElementChild) {

@@ -19,8 +19,22 @@ exit.addEventListener('click', () => {
     }
 });
 
-function handlerImage(event) {
-    const images = event.target.files;
+// AddFilesComponent.addEventListener('dragenter', () => {console.log('dragenter')}, false);
+// AddFilesComponent.addEventListener('dragleave', () => {console.log('dragleave')}, false);
+// AddFilesComponent.addEventListener('dragover', () => {console.log('dragover')}, false);
+AddFilesComponent.addEventListener('drop', (event) => {
+    event.preventDefault();
+    let files = event.dataTransfer.files;
+    handlerImage(null, files);
+}, false);
+
+function handlerImage(event, files) {
+    let images;
+    if (event) {
+        images = event.target.files;
+    } else {
+        images = files;
+    }
     
     for (let image of images) {
         if (image.size > 32000000) return;
