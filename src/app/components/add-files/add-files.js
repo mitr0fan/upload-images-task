@@ -26,17 +26,31 @@ AddFilesComponent.addEventListener('drop', (event) => {
 }, false);
 
 function handlerImage(event, files) {
+    const progress = document.querySelector('.progress-container');
+    progress.style.display = 'flex';
     let images;
+    let amount = 0;
     if (event) {
         images = event.target.files;
     } else {
         images = files;
     }
     
-    for (let image of images) {
-        if (image.size > 32000000) return;
+    reader();
+    
+    function reader() {
+        if(amount > images.length) {
+            setTimeout(() => {
+                progress.style.display = 'none';
+            }, 0);
+            return;
+        }
+        progress.firstElementChild.innerHTML = 'Загрузка ' +
+        Math.floor(amount / images.length * 100) + ' %';
         
+        let image = images[amount];
         if (image) {
+            if (image.size > 32000000) return;
             const reader = new FileReader();
             reader.readAsDataURL(image);
             
@@ -44,6 +58,10 @@ function handlerImage(event, files) {
                 createImages(e.target.result);
             }
         }
+        amount++;
+        return setTimeout(() => {
+            reader();
+        }, 0);
     }
 }
 
